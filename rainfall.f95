@@ -1,16 +1,3 @@
-program rainfall
-    implicit none
-    ! s gia to megethos twn pinakwn
-    integer :: s
-    integer, parameter :: Nmax = 50
-    integer, dimension(Nmax) :: rain
-    character(len = 15), dimension(Nmax) :: town
-
-    s = 0
-    call sub(town, rain, Nmax, s)
-    
-end program rainfall
-
 subroutine sub(T, R, Nmax, N)
     implicit none
 
@@ -43,3 +30,35 @@ subroutine sub(T, R, Nmax, N)
     write(*,*) "O Arithmos twn polewn einai ", N
     close(1)
 end subroutine sub
+
+function avg_rain (R, N, Nmax) result(a)
+    implicit none
+    integer, intent(in) :: Nmax, N
+    integer :: i
+    integer, dimension(Nmax), intent(in) :: R
+    real :: a
+
+    a = 0.0
+    do i = 1,N
+        a = a + R(i)*1.0
+    end do
+    
+    a = a/(N*1.0)
+end function avg_rain
+
+program rainfall
+    implicit none
+    ! s gia to megethos twn pinakwn
+    integer :: s
+    real :: avg, avg_rain
+    integer, parameter :: Nmax = 50
+    integer, dimension(Nmax) :: rain
+    character(len = 15), dimension(Nmax) :: town
+
+    avg = 0.0
+    s = 0
+    call sub(town, rain, Nmax, s)
+    avg = avg_rain(rain, s, Nmax)
+    write(*,*) "Mesos oros broxoptwshs einai ", avg
+    
+end program rainfall
