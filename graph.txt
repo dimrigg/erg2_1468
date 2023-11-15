@@ -1,0 +1,8 @@
+*   ff973d1 (HEAD -> master, origin/master) Merge branch 'feature'
+|\  
+| * 0827f2c c6 - Added average rainfall function
+|/  
+* dbbca55 c5 - Created subroutine to read file
+* c66b228 c4 - Read and display all items (up to 50) from data.txt
+* d6c72e8 c3 - Added more lines to data.txt
+* 9ccd07b c2 - Read and display 5 items from data.txt
